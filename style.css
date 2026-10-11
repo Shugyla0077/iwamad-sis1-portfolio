@@ -1,0 +1,641 @@
+/* ==========================================================================
+   Design Tokens & System Variables
+   ========================================================================== */
+:root {
+  /* Light theme color palette */
+  --bg: #ffffff;
+  --bg-subtle: #f8fafc;
+  --fg: #0f172a;
+  --fg-muted: #475569;
+  --card-bg: #ffffff;
+  --card-border: #e2e8f0;
+  --card-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.06), 0 2px 4px -2px rgba(15, 23, 42, 0.04);
+  
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --primary-subtle: #dbeafe;
+  
+  --secondary: #e2e8f0;
+  --secondary-hover: #cbd5e1;
+  --secondary-fg: #1e293b;
+
+  --error: #dc2626;
+  --error-bg: #fee2e2;
+  --success: #16a34a;
+  --success-bg: #dcfce7;
+
+  /* Typography Scale (minimum 14px everywhere) */
+  --font-sm: 14px;
+  --font-base: 16px;
+  --font-lg: 18px;
+  --font-xl: 22px;
+  --font-2xl: 32px;
+  --font-3xl: 42px;
+
+  /* Spacing Rhythm */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* Radii */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+
+  /* Focus ring */
+  --focus-ring: 2px solid var(--primary);
+  --focus-offset: 3px;
+}
+
+html[data-theme="dark"] {
+  /* Dark theme color palette */
+  --bg: #0b1220;
+  --bg-subtle: #111c30;
+  --fg: #f1f5f9;
+  --fg-muted: #94a3b8;
+  --card-bg: #132238;
+  --card-border: #1e3352;
+  --card-shadow: 0 4px 8px -1px rgba(0, 0, 0, 0.35);
+
+  --primary: #3b82f6;
+  --primary-hover: #60a5fa;
+  --primary-subtle: rgba(59, 130, 246, 0.2);
+
+  --secondary: #1e293b;
+  --secondary-hover: #334155;
+  --secondary-fg: #f8fafc;
+
+  --error: #f87171;
+  --error-bg: rgba(239, 68, 68, 0.15);
+  --success: #4ade80;
+  --success-bg: rgba(34, 197, 94, 0.15);
+}
+
+/* ==========================================================================
+   CSS Reset & Base Rules
+   ========================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: var(--font-base);
+  line-height: 1.6;
+  background-color: var(--bg);
+  color: var(--fg);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: background-color 0.25s ease, color 0.25s ease;
+  overflow-x: hidden;
+}
+
+/* Accessible Keyboard Focus Style across the entire site */
+:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-offset);
+}
+
+/* Layout Container */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--space-4);
+  padding-right: var(--space-4);
+}
+
+/* ==========================================================================
+   Header & Navigation
+   ========================================================================== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--bg);
+  border-bottom: 1px solid var(--card-border);
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding-top: var(--space-4);
+  padding-bottom: var(--space-4);
+}
+
+.site-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  text-decoration: none;
+  color: var(--fg);
+  font-weight: 700;
+  font-size: var(--font-lg);
+}
+
+.brand-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background-color: var(--primary);
+  color: #ffffff;
+  border-radius: var(--radius-sm);
+  font-size: var(--font-sm);
+  font-weight: 700;
+}
+
+.site-nav {
+  display: flex;
+}
+
+.nav-list {
+  display: flex;
+  list-style: none;
+  gap: var(--space-5);
+  align-items: center;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: var(--fg-muted);
+  font-weight: 500;
+  font-size: var(--font-base);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+  color: var(--primary);
+}
+
+/* Theme Toggle Button */
+.theme-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  background-color: var(--secondary);
+  color: var(--secondary-fg);
+  border: 1px solid var(--card-border);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-full);
+  font-size: var(--font-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.theme-btn:hover {
+  background-color: var(--secondary-hover);
+}
+
+/* ==========================================================================
+   Buttons & Links
+   ========================================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius-md);
+  font-size: var(--font-base);
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+}
+
+.btn-secondary {
+  background-color: var(--secondary);
+  color: var(--secondary-fg);
+  border-color: var(--card-border);
+}
+
+.btn-secondary:hover {
+  background-color: var(--secondary-hover);
+}
+
+.text-link {
+  color: var(--primary);
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.text-link:hover {
+  color: var(--primary-hover);
+}
+
+/* ==========================================================================
+   Section Headers & Common Layout
+   ========================================================================== */
+.section {
+  padding-top: var(--space-12);
+  padding-bottom: var(--space-12);
+}
+
+.section-header {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto var(--space-10) auto;
+}
+
+.section-tag {
+  display: inline-block;
+  font-size: var(--font-sm);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--primary);
+  margin-bottom: var(--space-2);
+}
+
+.section-title {
+  font-size: var(--font-2xl);
+  font-weight: 800;
+  color: var(--fg);
+  line-height: 1.25;
+  margin-bottom: var(--space-3);
+}
+
+.section-subtitle {
+  font-size: var(--font-base);
+  color: var(--fg-muted);
+}
+
+/* ==========================================================================
+   About Section
+   ========================================================================== */
+.about-section {
+  background-color: var(--bg-subtle);
+  border-bottom: 1px solid var(--card-border);
+}
+
+.about-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-8);
+}
+
+.avatar-placeholder {
+  width: 140px;
+  height: 140px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, var(--primary), #9333ea);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-3xl);
+  font-weight: 800;
+  box-shadow: 0 8px 16px -4px rgba(37, 99, 235, 0.3);
+}
+
+.about-content {
+  max-width: 650px;
+}
+
+.about-title {
+  font-size: var(--font-2xl);
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: var(--space-4);
+  color: var(--fg);
+}
+
+.about-text {
+  font-size: var(--font-base);
+  color: var(--fg-muted);
+  margin-bottom: var(--space-4);
+}
+
+.about-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  justify-content: center;
+  margin-top: var(--space-6);
+}
+
+/* ==========================================================================
+   Projects Section
+   ========================================================================== */
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+}
+
+.project-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  box-shadow: var(--card-shadow);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 20px -4px rgba(0, 0, 0, 0.12);
+}
+
+.card-badge {
+  align-self: flex-start;
+  font-size: var(--font-sm);
+  font-weight: 700;
+  color: var(--primary);
+  background-color: var(--primary-subtle);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  margin-bottom: var(--space-3);
+}
+
+.card-title {
+  font-size: var(--font-xl);
+  font-weight: 700;
+  margin-bottom: var(--space-3);
+  color: var(--fg);
+}
+
+.card-description {
+  font-size: var(--font-sm);
+  color: var(--fg-muted);
+  margin-bottom: var(--space-5);
+  flex-grow: 1;
+}
+
+.card-tags {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-6);
+}
+
+.tag {
+  font-size: var(--font-sm);
+  background-color: var(--secondary);
+  color: var(--secondary-fg);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+}
+
+.card-links {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  border-top: 1px solid var(--card-border);
+  padding-top: var(--space-4);
+}
+
+.link-btn {
+  text-decoration: none;
+  font-size: var(--font-sm);
+  font-weight: 600;
+  color: var(--primary);
+  transition: color 0.2s ease;
+}
+
+.link-btn:hover {
+  color: var(--primary-hover);
+  text-decoration: underline;
+}
+
+.link-secondary {
+  color: var(--fg-muted);
+}
+
+.link-secondary:hover {
+  color: var(--fg);
+}
+
+/* ==========================================================================
+   Contact Section & Form Validation
+   ========================================================================== */
+.contact-section {
+  background-color: var(--bg-subtle);
+  border-top: 1px solid var(--card-border);
+}
+
+.contact-container {
+  max-width: 600px;
+}
+
+.contact-form {
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8);
+  box-shadow: var(--card-shadow);
+}
+
+.form-group {
+  margin-bottom: var(--space-5);
+}
+
+.form-label {
+  display: block;
+  font-size: var(--font-sm);
+  font-weight: 600;
+  margin-bottom: var(--space-2);
+  color: var(--fg);
+}
+
+.required {
+  color: var(--error);
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--font-base);
+  font-family: inherit;
+  color: var(--fg);
+  background-color: var(--bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-md);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-input.input-error,
+.form-textarea.input-error {
+  border-color: var(--error);
+  background-color: var(--error-bg);
+}
+
+.error-msg {
+  font-size: var(--font-sm);
+  color: var(--error);
+  margin-top: var(--space-1);
+  min-height: 20px;
+  font-weight: 500;
+}
+
+.form-feedback {
+  display: none;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  font-size: var(--font-base);
+  font-weight: 600;
+  margin-bottom: var(--space-5);
+}
+
+.form-feedback.success {
+  display: block;
+  background-color: var(--success-bg);
+  color: var(--success);
+  border: 1px solid var(--success);
+}
+
+.form-feedback.error {
+  display: block;
+  background-color: var(--error-bg);
+  color: var(--error);
+  border: 1px solid var(--error);
+}
+
+.btn-submit {
+  width: 100%;
+  padding-top: var(--space-4);
+  padding-bottom: var(--space-4);
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+.site-footer {
+  margin-top: auto;
+  border-top: 1px solid var(--card-border);
+  background-color: var(--bg);
+  padding: var(--space-6) 0;
+}
+
+.footer-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  text-align: center;
+  font-size: var(--font-sm);
+  color: var(--fg-muted);
+}
+
+.footer-links {
+  display: flex;
+  gap: var(--space-4);
+}
+
+.footer-link {
+  color: var(--fg-muted);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.footer-link:hover {
+  color: var(--primary);
+}
+
+/* ==========================================================================
+   Responsiveness & Deliberate Layout Changes (375px -> 1200px)
+   ========================================================================== */
+
+/* Mobile view (< 640px) */
+@media (max-width: 639px) {
+  .header-inner {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .site-nav {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .nav-list {
+    gap: var(--space-3);
+  }
+
+  .site-brand {
+    order: 1;
+  }
+
+  .theme-btn {
+    order: 2;
+  }
+
+  .about-actions .btn {
+    width: 100%;
+  }
+
+  .contact-form {
+    padding: var(--space-5);
+  }
+}
+
+/* Desktop layout (>= 768px and up to 1200px) */
+@media (min-width: 768px) {
+  .about-grid {
+    flex-direction: row;
+    text-align: left;
+    justify-content: center;
+    gap: var(--space-12);
+  }
+
+  .about-actions {
+    justify-content: flex-start;
+  }
+
+  .about-title {
+    font-size: var(--font-3xl);
+  }
+
+  /* DELIBERATE LAYOUT CHANGE: Projects grid changes from 1 to 3 columns */
+  .projects-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .footer-inner {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
