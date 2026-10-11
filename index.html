@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shugyla Zhambybay | Frontend Developer Portfolio</title>
+  <meta name="description" content="Personal portfolio of Shugyla Zhambybay, Frontend Developer & KBTU student.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Header & Navigation -->
+  <header class="site-header">
+    <div class="header-inner container">
+      <a href="#about" class="site-brand" aria-label="Home">
+        <span class="brand-badge">SZ</span>
+        <span class="brand-text">Shugyla.dev</span>
+      </a>
+
+      <nav class="site-nav" aria-label="Main Navigation">
+        <ul class="nav-list">
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <button id="theme-toggle" class="theme-btn" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+        <span id="theme-icon" aria-hidden="true">🌙</span>
+        <span id="theme-text">Dark Mode</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <!-- About Section -->
+    <section id="about" class="section about-section">
+      <div class="container about-grid">
+        <div class="about-avatar-wrap">
+          <div class="avatar-placeholder" aria-label="Profile Photo of Shugyla Zhambybay" role="img">
+            <span>SZ</span>
+          </div>
+        </div>
+        <div class="about-content">
+          <p class="section-tag">Frontend Developer</p>
+          <h1 class="about-title">Hello, I'm Shugyla Zhambybay</h1>
+          <p class="about-text">
+            I am an undergraduate student at Kazakh-British Technical University (KBTU) specializing in Information Systems and Frontend Engineering. I build accessible, responsive web interfaces with semantic HTML, modern CSS architecture, and clean JavaScript.
+          </p>
+          <p class="about-text">
+            Currently mastering web fundamentals and component architectures in the IWaMAD course while building practical applications.
+          </p>
+          <div class="about-actions">
+            <a href="#projects" class="btn btn-primary">View My Projects</a>
+            <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section projects-section">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-tag">Featured Works</p>
+          <h2 class="section-title">Practical Builds & Projects</h2>
+          <p class="section-subtitle">Real web applications developed during Weeks 1–5 of university coursework.</p>
+        </div>
+
+        <div class="projects-grid">
+          <!-- Project 1 -->
+          <article class="project-card">
+            <div class="card-badge">Week 4–5</div>
+            <h3 class="card-title">Interactive Profile & Design System</h3>
+            <p class="card-description">
+              A responsive web portfolio built with React 19, TypeScript, and Vite. Implements a global reactive like counter using the React Context API, structured CSS design tokens, and unit tests written in Vitest.
+            </p>
+            <ul class="card-tags" aria-label="Technologies used">
+              <li class="tag">React 19</li>
+              <li class="tag">TypeScript</li>
+              <li class="tag">Vitest</li>
+              <li class="tag">Design Tokens</li>
+            </ul>
+            <div class="card-links">
+              <a href="https://shugyla0077.github.io/iwamad-practice/" target="_blank" rel="noopener noreferrer" class="link-btn">Live Demo &rarr;</a>
+              <a href="https://github.com/Shugyla0077/iwamad-practice" target="_blank" rel="noopener noreferrer" class="link-btn link-secondary">GitHub Repo</a>
+            </div>
+          </article>
+
+          <!-- Project 2 -->
+          <article class="project-card">
+            <div class="card-badge">Week 3</div>
+            <h3 class="card-title">Student Profile Card Component</h3>
+            <p class="card-description">
+              An isolated, reusable card component with dynamic external links, social links mapping, accessible avatar presentation, and responsive vertical-to-horizontal layout switching.
+            </p>
+            <ul class="card-tags" aria-label="Technologies used">
+              <li class="tag">React</li>
+              <li class="tag">Component Architecture</li>
+              <li class="tag">CSS Flexbox</li>
+            </ul>
+            <div class="card-links">
+              <a href="https://shugyla0077.github.io/iwamad-practice/" target="_blank" rel="noopener noreferrer" class="link-btn">Live Demo &rarr;</a>
+              <a href="https://github.com/Shugyla0077/iwamad-practice/tree/week-03" target="_blank" rel="noopener noreferrer" class="link-btn link-secondary">GitHub Repo</a>
+            </div>
+          </article>
+
+          <!-- Project 3 -->
+          <article class="project-card">
+            <div class="card-badge">Weeks 1–2</div>
+            <h3 class="card-title">Foundational Web Layouts</h3>
+            <p class="card-description">
+              Initial exploration of layout models, box-model mechanics, media queries, Git feature-branch workflows, and semantic HTML5 structuring for mobile-first user interfaces.
+            </p>
+            <ul class="card-tags" aria-label="Technologies used">
+              <li class="tag">HTML5</li>
+              <li class="tag">Responsive CSS</li>
+              <li class="tag">Git Branching</li>
+            </ul>
+            <div class="card-links">
+              <a href="https://github.com/Shugyla0077/iwamad-practice/tree/week-02" target="_blank" rel="noopener noreferrer" class="link-btn">GitHub Repo &rarr;</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact-section">
+      <div class="container contact-container">
+        <div class="section-header">
+          <p class="section-tag">Reach Out</p>
+          <h2 class="section-title">Contact Me</h2>
+          <p class="section-subtitle">
+            Have a question or want to work together? Fill in the form below or email me directly at
+            <a href="mailto:s_zhambibay@kbtu.kz" class="text-link">s_zhambibay@kbtu.kz</a>.
+          </p>
+        </div>
+
+        <form id="contact-form" class="contact-form" novalidate>
+          <div id="form-feedback" class="form-feedback" role="alert" aria-live="polite"></div>
+
+          <div class="form-group">
+            <label for="user-name" class="form-label">Your Name <span class="required" aria-hidden="true">*</span></label>
+            <input type="text" id="user-name" name="name" class="form-input" placeholder="e.g. Shugyla Zhambybay" autocomplete="name">
+            <p id="name-error" class="error-msg" aria-live="polite"></p>
+          </div>
+
+          <div class="form-group">
+            <label for="user-email" class="form-label">Your Email <span class="required" aria-hidden="true">*</span></label>
+            <input type="email" id="user-email" name="email" class="form-input" placeholder="e.g. s_zhambibay@kbtu.kz" autocomplete="email">
+            <p id="email-error" class="error-msg" aria-live="polite"></p>
+          </div>
+
+          <div class="form-group">
+            <label for="user-message" class="form-label">Message <span class="required" aria-hidden="true">*</span></label>
+            <textarea id="user-message" name="message" rows="5" class="form-textarea" placeholder="Write your message here..."></textarea>
+            <p id="message-error" class="error-msg" aria-live="polite"></p>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-submit">Send Message</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p class="footer-copy">&copy; 2026 Shugyla Zhambybay. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="https://github.com/Shugyla0077" target="_blank" rel="noopener noreferrer" class="footer-link">GitHub</a>
+        <a href="mailto:s_zhambibay@kbtu.kz" class="footer-link">Email</a>
+        <a href="https://shugyla0077.github.io/iwamad-practice/" target="_blank" rel="noopener noreferrer" class="footer-link">Practice Project</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
